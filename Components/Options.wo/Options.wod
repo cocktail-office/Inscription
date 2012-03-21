@@ -1,0 +1,39 @@
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+
+IconeToolAdministration : WOImage {
+	alt = "Administration de l'application";
+	border = 0;
+	filename = "images/ktip.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+Administration : WOHyperlink {
+	action = administration;
+}
+
+IconeToolGestionUtilisateurs : WOImage {
+	alt = "Gérer les droits utilisateurs";
+	border = 0;
+	filename = "images/ktip.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+GestionUtilisateurs : WOHyperlink {
+	action = gestionUtilisateurs;
+}
+
+IconeToolPreferences : WOImage {
+	alt = "Modifier ses préférences";
+	border = 0;
+	filename = "images/ktip.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+Preferences : WOHyperlink {
+	action = preferences;
+}

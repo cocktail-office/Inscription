@@ -1,0 +1,64 @@
+Wrapper : Wrapper {
+	titre = "Nouveau dossier depuis une pré-inscription";
+}
+IsAfficherQbe : WOConditional {
+	condition = ctrl.isAfficherQbe;
+}
+IsAfficherDossier : WOConditional {
+	condition = ctrl.isAfficherDossier;
+}
+ContainerGeneral : AjaxUpdateContainer {
+	id = "ContainerGeneral";
+	style = "height:100%;";
+}
+ContainerQbe : AjaxUpdateContainer {
+	id = "ContainerQbe";
+	class = "qbe";
+}
+WaitSmall : WOImage {
+  filename = "images/ajax-loader_gris.gif";
+  framework = "FwkCktlThemes";
+  id = "busy";
+  height = 13;
+  width = 16;
+  style = "display:none;";
+}
+
+FormQbeEtudiant : WOForm {
+	id = "FormQbeEtudiant";
+}
+QbeNumeroINE : WOTextField {
+  	id = "NumeroINEId";
+  	value = qbe.numeroINE;
+}
+ObserverNumeroINE : AjaxObserveField {
+	action = ctrl.rechercherPreEtudiantEtSaisirDossier;
+	fullSubmit = false;
+	observeFieldID = "NumeroINEId";
+	//updateContainerID = "ContainerGeneral";
+	onComplete = "function(oC) {ErreurContainerUpdate();ContainerGeneralUpdate();}";
+}
+
+Rechercher : CktlAjaxButton {
+	type = "find";
+	showBusyImage = true;
+	action = ctrl.rechercherPreEtudiantEtSaisirDossier;
+	//updateContainerID = "ContainerGeneral";
+	onComplete = "function(oC) {ErreurContainerUpdate();ContainerGeneralUpdate();}";
+}
+
+JSSelectNumeroINEField : WOJavaScript {
+	scriptString = "Form.Element.activate(\'NumeroINEId\');";
+}
+
+DossierAdministratif : DossierAdministratif {
+	etudiant = ctrl.etudiant;
+	historique = ctrl.historique;
+	utilisateur = session.utilisateur;
+	isModification = true;
+	editable = true;
+	startInEditionMode = true;
+	returnPageOnCancel = "Accueil";
+	returnPageOnError = "Accueil";
+	isAnneeCivile = application.isAnneeCivile;
+}

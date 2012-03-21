@@ -1,0 +1,243 @@
+Wrapper : Wrapper {
+	titre = "Recherche d'étudiants";
+}
+ContainerGeneral : AjaxUpdateContainer {
+	id = "ContainerGeneral";
+	style = "height:100%;";
+}
+ContainerQbe : AjaxUpdateContainer {
+	id = "ContainerQbe";
+	class = "qbe";
+	onComplete = "function(oC) {ContainerListeEtudiantsUpdate();}";
+}
+WaitSmall : WOImage {
+  filename = "images/ajax-loader_gris.gif";
+  framework = "FwkCktlThemes";
+  id = "busy";
+  height = 13;
+  width = 16;
+  style = "display:none;";
+}
+
+FormQbeEtudiant : WOForm {
+	id = "FormQbeEtudiant";
+}
+
+DefaultSubmitButton : AjaxDefaultSubmitButton {
+	action = ctrl.rechercherLesEtudiants;
+	updateContainerID = "ContainerGeneral";
+}
+
+IsPlusieursEtablissements : WOConditional {
+	condition = isPlusieursEtablissements;
+}
+
+QbeAnnee : WOTextField {
+  	id = "QbeAnnee";
+  	value = qbe.annee;
+  	size = "6";
+  	numberformat = "####";
+}
+QbeNumeroINE : WOTextField {
+  	id = "NumeroINE";
+  	value = qbe.etudCodeIne;
+  	size = "13";
+}
+QbeNumeroEtudiant : WOTextField {
+  	id = "NumeroEtudiant";
+  	value = qbe.etudNumero;
+  	numberformat = "######";
+}
+
+QbeDateDeNaissance : WOTextField {
+  	id = "DateDeNaissance";
+  	value = qbe.dNaissance;
+  	dateformat = "%d/%m/%Y";
+}
+
+QbeNom : WOTextField {
+  	id = "Nom";
+  	value = qbe.nomPatronymique;
+}
+
+QbePrenom : WOTextField {
+  	id = "Prenom";
+  	value = qbe.prenom;
+}
+
+QbeEtablissement : WOPopUpButton {
+  	id = "Etablissement";
+	noSelectionString = "Tous";
+	displayString = ctrl.unEtablissement.lcStructure;
+	list = ctrl.listeEtablissements;
+	selection = qbe.etablissement;
+	item = ctrl.unEtablissement;
+	class = "useMaxWidth";
+}
+
+Rechercher : CktlAjaxSubmitButton {
+	type = "find";
+	showBusyImage = true;
+	action = ctrl.rechercherLesEtudiants;
+	updateContainerID = "ContainerGeneral";
+}
+
+AnnulerLaRecherche : CktlAjaxButton {
+	type = "reset";
+	action = ctrl.annulerLaRecherche;
+	updateContainerID = "ContainerGeneral";
+}
+
+IsListeEtudiantsNotEmpty : WOConditional {
+  condition = ctrl.etudiants.count;
+}
+IsListeDossiersEtudiantNotEmpty : WOConditional {
+  condition = ctrl.dossiers.count;
+}
+NbreEtudiants : WOString {
+	value = ctrl.etudiants.count;
+}
+ContainerListeOuDetail : AjaxUpdateContainer {
+	id = "ContainerListeOuDetail";
+	style = "width:100%;height:100%";
+}
+ContainerListeEtudiants : AjaxUpdateContainer {
+	id = "ContainerListeEtudiants";
+}
+Etudiants : WORepetition {
+	list = ctrl.etudiants;
+	item = ctrl.unEtudiant;
+}
+
+AfficherDetailEtudiant : AjaxUpdateLink {
+	action = ctrl.afficherLesDossiers;
+	//updateContainerID = "ContainerGeneral";
+	onComplete = "function(oC) {ContainerGeneralUpdate();ErreurContainerUpdate();}";
+	title = "Voir ses dossiers...";
+}
+EtudiantNom : WOString {
+  value = ctrl.unEtudiant.individu.nomPatronymique;
+}
+
+EtudiantPrenom : WOString {
+  value = ctrl.unEtudiant.individu.prenom;
+}
+
+EtudiantDateDeNaissance : WOString {
+  value = ctrl.unEtudiant.individu.dNaissance;
+  dateformat = "%d/%m/%Y";
+}
+
+EtudiantNumIne : WOString {
+  value = ctrl.unEtudiant.numeroINE;
+}
+
+EtudiantNumEtudiant : WOString {
+  value = ctrl.unEtudiant.numero;
+}
+
+EtudiantEtablissement : WOString {
+  value = ctrl.unEtudiant.rne.lcRne;
+}
+
+IsReinscriptionPossible : WOConditional {
+	condition = session.utilisateur.isAjout;
+}
+
+Reinscrire : AjaxHyperlink {
+	action = ctrl.reInscrire;
+	title = "Ré-inscrire";
+	onComplete = "function(oC) {ErreurContainerUpdate();}";
+	onFailure = "function(oF) {ErreurContainerUpdate();}";
+}
+
+IconeReinscrire : WOImage {
+	alt = "R&eacute;-inscrire";
+	filename = "images/dossier_reinscription.png";
+	//framework = "app";
+	style = "border:none; background: transparent; width:16px; height:13px;";
+}
+
+RetourListeEtudiants : CktlAjaxButton {
+	type = "previous";
+	text = "Retour à la liste des étudiants";
+	action = retourListeEtudiants;
+	updateContainerID = "ErreurContainer";
+	onSuccess = "function(oS) {ContainerGeneralUpdate();}";
+}
+RetourListeDossiers : CktlAjaxButton {
+	type = "previous";
+	text = "Retour à la liste des dossiers";
+	action = retourListeDossiers;
+	updateContainerID = "ErreurContainer";
+	onSuccess = "function(oS) {ContainerGeneralUpdate();}";
+}
+IsAfficherDetailEtudiant : WOConditional {
+  condition = isAfficherDetailEtudiant;
+}
+IsNotAfficherDetailEtudiant : WOConditional {
+  condition = isAfficherDetailEtudiant;
+  negate = true;
+}
+
+IsAfficherDossiersEtudiant : WOConditional {
+  condition = isAfficherDossiersEtudiant;
+}
+ContainerListeDossiersEtudiant : AjaxUpdateContainer {
+	id = "ContainerListeDossiersEtudiant";
+}
+Dossiers : WORepetition {
+	list = ctrl.dossiers;
+	item = ctrl.unDossier;
+}
+NbreDossiers : WOString {
+	value = ctrl.dossiers.count;
+}
+
+AfficherDossierEtudiant : AjaxUpdateLink {
+	action = ctrl.afficherLeDossier;
+	//updateContainerID = "ContainerGeneral";
+	onComplete = "function(oC) {ContainerGeneralUpdate();ErreurContainerUpdate();}";
+	title = "Voir son dossier...";
+}
+DossierAnnee : WOString {
+  value = ctrl.unDossier.histAnneeScol;
+}
+DossierInscription : WOString {
+  value = ctrl.unDossier.inscriptionPrincipale.toStringLight;
+}
+DossierDateInsc : WOString {
+  value = ctrl.unDossier.inscriptionPrincipale.idiplDateInsc;
+  dateformat = "%d/%m/%Y";
+}
+DossierResultat : WOString {
+  value = ctrl.unDossier.inscriptionPrincipale.toResultat.resLibelle;
+}
+DossierEtablissement : WOString {
+  value = ctrl.unDossier.inscriptionPrincipale.toFwkScolarite_ScolFormationSpecialisation.toFwkScolarite_ScolFormationDiplome.toFwkScolarix_VEtablissementScolarite.toRne.lcRne;
+}
+
+IsAfficherDossierEtudiant : WOConditional {
+  condition = isAfficherDossierEtudiant;
+}
+
+NomEtPrenomEtudiant : WOString {
+	value = ctrl.leEtudiant.prenomNom;
+}
+NumeroEtudiant : WOString {
+	value = ctrl.leEtudiant.numero;
+}
+
+DossierAdministratif : DossierAdministratif {
+	etudiant = ctrl.leEtudiant;
+	historique = ctrl.leDossier;
+	utilisateur = session.utilisateur;
+	isModification = true;
+	editable = session.utilisateur.isModif;
+	startInEditionMode = false;
+	returnPageOnError = "Accueil";
+	isAnneeCivile = application.isAnneeCivile;
+}
+JSSelectQbeNomField : WOJavaScript {
+	scriptString = "Form.Element.activate('Nom');";
+}

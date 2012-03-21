@@ -1,0 +1,65 @@
+Wrapper : Wrapper {
+	titre = "Nouveau dossier en ré-inscription";
+}
+IsAfficherQbe : WOConditional {
+	condition = ctrl.isAfficherQbe;
+}
+IsAfficherDossier : WOConditional {
+	condition = ctrl.isAfficherDossier;
+}
+ContainerGeneral : AjaxUpdateContainer {
+	id = "ContainerGeneral";
+	style = "height:100%;";
+}
+ContainerQbe : AjaxUpdateContainer {
+	id = "ContainerQbe";
+	class = "qbe";
+	//onComplete = "function(oC) {ContainerGeneralUpdate();}";
+}
+WaitSmall : WOImage {
+  filename = "images/ajax-loader_gris.gif";
+  framework = "FwkCktlThemes";
+  id = "busy";
+  height = 13;
+  width = 16;
+  style = "display:none;";
+}
+
+FormQbeEtudiant : WOForm {
+	id = "FormQbeEtudiant";
+}
+QbeNumeroEtudiant : WOTextField {
+  	id = "NumeroEtudiantId";
+  	value = qbe.etudNumero;
+  	numberformat = "#######";
+}
+ObserverNumeroEtudiant : AjaxObserveField {
+	action = ctrl.rechercherEtudiantEtSaisirDossier;
+	fullSubmit = false;
+	observeFieldID = "NumeroEtudiantId";
+	updateContainerID = "ContainerGeneral";
+}
+
+Rechercher : CktlAjaxButton {
+	type = "find";
+	showBusyImage = true;
+	action = ctrl.rechercherEtudiantEtSaisirDossier;
+	updateContainerID = "ContainerGeneral";
+	onComplete = "function(oC) {ErreurContainerUpdate();}";
+}
+
+JSSelectNumeroEtudiantField : WOJavaScript {
+	scriptString = "Form.Element.activate(\'NumeroEtudiantId\');";
+}
+
+DossierAdministratif : DossierAdministratif {
+	etudiant = ctrl.etudiant;
+	historique = ctrl.historique;
+	utilisateur = session.utilisateur;
+	isModification = true;
+	editable = true;
+	startInEditionMode = true;
+	returnPageOnCancel = "Accueil";
+	returnPageOnError = "Accueil";
+	isAnneeCivile = application.isAnneeCivile;
+}

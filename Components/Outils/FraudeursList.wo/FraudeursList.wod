@@ -1,0 +1,44 @@
+Container : AjaxUpdateContainer {
+    id = containerId;
+}
+
+Form : ERXWOForm {
+}
+
+DefaultSubmit : AjaxDefaultSubmitButton {
+	action = filtrer;
+	updateContainerID = containerId;
+}
+
+Filtre : WOTextField {
+	id = "filtre";
+	value = filtre;
+}
+
+Filtrer : CktlAjaxSubmitButton {
+	type = "find";
+	showBusyImage = true;
+    //text = "Filtrer";
+	action = filtrer;
+	updateContainerID = containerId;
+}
+
+TBV : CktlAjaxTableView {
+	id = componentId;
+	colonnes = colonnes;
+	dg = ^dg;
+	item = unObjet;
+	selectionMultipleEnabled = false;
+	selectionEnabled = true;	
+	afficherBarreDeNavigation = false; 
+	afficherBarreDeStatut = false;
+	updateContainerID = ^updateContainerID;
+	cssClass = ^cssClass;
+	height = ^height;
+	width = ^width;
+	cssStyle = ^cssStyle;
+}
+
+JSSelectFiltreField : WOJavaScript {
+	scriptString = "Form.Element.activate(\'filtre\');";
+}

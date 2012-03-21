@@ -1,0 +1,105 @@
+<webobject name = "Wrapper">
+	<webobject name = "ContainerGeneral">
+	<table style="width:100%; height:100%; text-align:center; margin:0; padding:0; border:none;">
+		<tbody>
+			<tr>
+			<td style="vertical-align:top; text-align:center;">
+			  <webobject name = "ContainerQbe">
+			    <center>
+			    <fieldset title = "Recherche" >
+			    <legend>Recherche de pr&eacute;-dossier&nbsp;<webobject name = "WaitSmall"/></legend>
+			    <webobject name = "FormQbePreEtudiant">
+		          <webobject name="DefaultSubmitButton"/>
+			      <table width="100%">
+			        <thead>
+			          <tr>
+			            <th align="left">Nom</th>
+			            <th align="left">Pr&eacute;nom</th>
+			            <th align="left">N&deg; Etudiant</th>
+			            <th align="left">N&deg; BEA/INE</th>
+			            <th align="left">Date de naissance</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			          <tr>
+			            <td><webobject name = "Nom"/></td>
+			            <td><webobject name = "Prenom"/></td>
+			            <td><webobject name = "NumeroEtudiant"/></td>
+			            <td><webobject name = "NumeroINE"/></td>
+			            <td><webobject name = "DateDeNaissance"/></td>
+					    <td><webobject name = "Rechercher"/></td>
+					    <td><webobject name = "AnnulerLaRecherche"/></td>
+			          </tr>
+			        </tbody>
+			      </table>
+			    </webobject>
+			    </fieldset>
+			    </center>
+			  </webobject>
+			</td>
+			</tr>
+			<tr>
+			<td style="vertical-align:top; text-align:center; height:100%;">
+				  <webobject name = "ContainerListeOuDetail">
+					  <webobject name = "IsNotAfficherDetailPreEtudiant">
+						  <webobject name = "ContainerListePreEtudiants">
+						    <webobject name = "IsAfficherListePreEtudiants">
+						    <center>
+						    <fieldset title = "PreEtudiants" >
+						    <legend><font color = "red"><webobject name = "NbrePreEtudiants"/></font>&nbsp;Pr&eacute;-&eacute;tudiant(s)</legend>
+							    <table class="liste avecSelection" width="100%">
+							      <thead>
+							        <tr>
+							            <th>Nom</th>
+							            <th nowrap>Pr&eacute;nom</th>
+							            <th nowrap>Date de naissance</th>
+							            <th nowrap>N&deg; BEA/INE</th>
+							            <th nowrap>N&deg; Etudiant</th>
+							            <th nowrap>Etablissement</th>
+			          					<th class="useMinWidth nowrap" style="width:16px;"><span>&nbsp;</span></th>
+							        </tr>
+							      </thead>
+							      <tbody>
+							        <webobject name = "PreEtudiants">
+							          <tr>
+							            <td><webobject name = "AfficherDetailPreEtudiant"><webobject name = "PreEtudiantNom"/></webobject></td>
+							            <td><webobject name = "PreEtudiantPrenom"/></td>
+							            <td class="alignToCenter useMinWidth nowrap"><webobject name = "PreEtudiantDateDeNaissance"/></td>
+							            <td class="alignToCenter useMinWidth nowrap"><webobject name = "PreEtudiantNumIne"/></td>
+							            <td class="alignToCenter useMinWidth nowrap"><webobject name = "PreEtudiantNumEtudiant"/></td>
+							            <td class="useMinWidth nowrap"><webobject name = "PreEtudiantEtablissement"/></td>
+										<td class="alignToCenter useMinWidth nowrap" ><webobject name = "IsInscriptionPossible"><span><webobject name = "Inscrire"><webobject name="IconeInscrire"/></webobject></span></webobject></td>
+							          </tr>
+							        </webobject>
+							      </tbody>
+							    </table>
+						    </fieldset>
+						    </center>
+							</webobject>
+						  </webobject>
+					</webobject>
+				
+					<webobject name = "IsAfficherDetailPreEtudiant">
+							<table style="width:100%; height:100%; text-align:center; margin:0; padding:0; border:none;">
+								<tbody>
+									<tr>
+									<td style="vertical-align:top; text-align:center;">
+										<webobject name="RetourListe"/>
+									</td>
+									</tr>
+									<tr>
+									<td style="vertical-align:top; text-align:center; height:100%;">
+										<webobject name = "DossierAdministratif"/>
+									</td>
+									</tr>
+								</tbody>
+							</table>
+					</webobject>
+				</webobject>
+			</td>
+			</tr>
+		</tbody>
+	</table>
+	</webobject>
+</webobject>
+<webobject name="JSSelectNomField"/>

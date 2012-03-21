@@ -1,0 +1,64 @@
+Wrapper : Wrapper {
+	titre = "Nouveau dossier";
+}
+IsNotAfficherDossierEtudiant : WOConditional {
+	condition = isAfficherDossierEtudiant;
+	negate = true;
+}
+WaitSmall : WOImage {
+  filename = "images/ajax-loader_gris.gif";
+  framework = "FwkCktlThemes";
+  id = "busy";
+  height = 13;
+  width = 16;
+  style = "display:none;";
+}
+FormSearch : WOForm {
+	multipleSubmit = true;
+}
+PersonneSrch : PersonneSrch {
+	utilisateurPersId = ctrl.utilisateurPersId;
+	selectedPersonne = ctrl.selectedPersonne;
+	editingContext = ctrl.edc;
+	showDetail = true;
+	showIndividus = true;
+	showStructures = false;
+	showPersonnesExternes = true;
+	showPersonnesInternes = true;
+	showRadioInterneExterne = false;
+	fetchLimit = 50;
+	resultListHeight = "420";
+	isReadOnly = true;
+	titre = " ";
+}
+Selectionner : CktlAjaxButton {
+	type = "validate";
+	showBusyImage = true;
+	text = "Sélectionner cette personne";
+	action = selectionner;
+	updateContainerID = "ErreurContainer";
+	onSuccess = "function (oC) {WrapperContentContainerUpdate();}";
+	onFailure = "function(oF) {ErreurContainerUpdate();}";
+}
+Creer : CktlAjaxButton {
+	type = "new";
+	showBusyImage = true;
+	text = "Créer une nouvelle personne";
+	action = creer;
+	updateContainerID = "ErreurContainer";
+	onComplete = "function (oC) {WrapperContentContainerUpdate();}";
+}
+IsAfficherDossierEtudiant : WOConditional {
+	condition = isAfficherDossierEtudiant;
+}
+DossierAdministratif : DossierAdministratif {
+	etudiant = etudiant;
+	historique = historique;
+	utilisateur = session.utilisateur;
+	isModification = false;
+	editable = false;
+	startInEditionMode = true;
+	returnPageOnCancel = "Accueil";
+	returnPageOnError = "Accueil";
+	isAnneeCivile = application.isAnneeCivile;
+}

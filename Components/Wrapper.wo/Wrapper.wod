@@ -1,0 +1,92 @@
+Notifs : CktlAjaxUiMessageContainer {
+	id = "UIMessageContainer";
+}
+
+PageErreur : WOActionURL {
+	action = pageErreur;
+}
+PageTelechargements : WOActionURL {
+	action = pageTelechargements;
+}
+
+Titre : WOString {
+	value = titre;
+}
+Body : WOBody {
+	onload = onloadJS;
+}
+
+IdentificationContainer : AjaxUpdateContainer {
+	id = "IdentificationContainer";
+	class = "identification";
+}
+//Etablissement : WOString {
+//	value = session.garnucheApplication.cRne;
+//}
+Etablissement : CktlAjaxInPlacePopupButton {
+	label = "Etablissement : ";
+	viewValue = session.etablissement.lcStructure;
+	editValue = session.etablissement;
+	displayString = unEtablissement.lcStructure;
+	list = listeEtablissements;
+	item = unEtablissement;
+	disabled = isNotPlusieursEtablissements;
+	canEdit = canClick;
+	canSave = canClick;
+}
+Utilisateur : WOString {
+	value = session.connectedUserInfo.nomEtPrenom;
+}
+AnneeUniversitaire : CktlAjaxInPlacePopupButton {
+	label = "Année en cours : ";
+	viewValue = session.anneeScolaire;
+	editValue = session.anneeScolaire;
+	displayString = uneAnneeScolaire;
+	list = listeAnneeScolaire;
+	item = uneAnneeScolaire;
+	canEdit = canClick;
+	canSave = canClick;
+}
+Accueil : WOHyperlink {
+	action = accueil;
+}
+IconeAccueil : WOImage {
+	alt = "Retour à l'accueil";
+	title = "Retour à l'accueil";
+	border = 0;
+	filename = "images/16x16/001_20_16x16.png";
+	framework = "FwkCktlThemes";
+	height = "16";
+	width = "16";
+}
+
+
+ContentContainer : AjaxUpdateContainer {
+	id = "WrapperContentContainer";
+	class = "global";	
+}
+Content : WOComponentContent {
+}
+
+Copyright : WOString {
+	value = copyright;
+	escapeHTML = false;
+}
+Contact : WOHyperlink {
+
+	href = contact;
+	string = "Contact";
+}
+Version : WOString {
+	value = version;
+	escapeHTML = false;
+}
+ErreurContainer : AjaxUpdateContainer {
+	id = "ErreurContainer";
+}
+ErreurScript : WOString {
+	value = erreurScript;
+}
+Busy: AjaxBusyIndicator {
+	divID = "busy";
+}

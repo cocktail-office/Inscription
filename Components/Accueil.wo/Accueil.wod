@@ -1,0 +1,121 @@
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+
+Commentaire : WOString {
+	value = commentaires;
+	escapeHTML = false;
+}
+
+IconeSaisirNouveauDossier : WOImage {
+	alt = "Premi&egrave;re inscription";
+	border = 0;
+	filename = "images/dossier_inscription.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+SaisirNouveauDossier : WOHyperlink {
+	action = saisirNouveauDossier;
+	disabled = session.utilisateur.isAjoutDisabled;
+}
+
+IconeSaisirNouveauDossierReInscription : WOImage {
+	alt = "R&eacute;-inscription";
+	border = 0;
+	filename = "images/dossier_reinscription.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+SaisirNouveauDossierReInscription : WOHyperlink {
+	action = saisirNouveauDossierReInscription;
+	disabled = session.utilisateur.isAjoutDisabled;
+}
+
+IconeSaisirNouveauDossierPreEtudiant : WOImage {
+	alt = "Depuis pr&eacute;-inscription";
+	border = 0;
+	filename = "images/dossier_preinscription.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+SaisirNouveauDossierPreEtudiant : WOHyperlink {
+	action = saisirNouveauDossierPreEtudiant;
+	disabled = session.utilisateur.isAjoutDisabled;
+}
+
+IconeRechercheDossier : WOImage {
+	alt = "Recherche de dossier";
+	border = 0;
+	filename = "images/db_update.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+RechercheDossier : WOHyperlink {
+	action = rechercheDossier;
+	disabled = session.utilisateur.isConsultDisabled;
+}
+FormQbeEtudNumero : WOForm {
+	id = "FormQbeEtudNumero";
+}
+DefaultSubmitButtonEtudNumero : AjaxDefaultSubmitButton {
+	action = rechercheDossierEtudNumero;
+}
+EtudNumero : WOTextField {
+	id = "EtudNumero";
+  	value = etudNumero;
+  	numberformat = "######";
+  	size = "8";
+  	style = "text-align:center;";
+}
+RechercheDossierEtudNumero : CktlAjaxSubmitButton {
+	type = "find";
+	showBusyImage = true;
+	action = rechercheDossierEtudNumero;
+}
+RecherchePreDossier : WOHyperlink {
+	action = recherchePreDossier;
+	disabled = session.utilisateur.isConsultDisabled;
+}
+
+IconeOutils : WOImage {
+	alt = "Outils";
+	border = 0;
+	filename = "images/tool_icon.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+Outils : WOHyperlink {
+	pageName = "Outils";
+}
+
+IconeOptions : WOImage {
+	alt = "Options";
+	border = 0;
+	filename = "images/ktip.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+Options : WOHyperlink {
+	pageName = "Options";
+}
+
+IconeQuitter : WOImage {
+	alt = "Quitter l'application";
+	border = 0;
+	filename = "images/24x24/logout_24x24.png";
+	framework = "FwkCktlThemes";
+	height = "24";
+	width = "24";
+}
+Quitter : WOHyperlink {
+	action = quitter;
+}
+JSSelectEtudNumeroField : WOJavaScript {
+	scriptString = "Form.Element.activate('EtudNumero');";
+}

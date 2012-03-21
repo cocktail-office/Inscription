@@ -1,0 +1,39 @@
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+
+IconeOutilBordereauxRemboursement : WOImage {
+	alt = "Gestion des bordereaux de remboursement";
+	border = 0;
+	filename = "images/tool_icon.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+OutilBordereauxRemboursement : WOHyperlink {
+	action = bordereauxRemboursement;
+}
+
+IconeOutilFraudeurs : WOImage {
+	alt = "Gestion des fraudeurs";
+	border = 0;
+	filename = "images/tool_icon.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+OutilFraudeurs : WOHyperlink {
+	action = fraudeurs;
+}
+
+IconeOutilResultatsParDiplome : WOImage {
+	alt = "Résultats par diplome";
+	border = 0;
+	filename = "images/tool_icon.png";	
+	framework = "app";
+	height = "24";
+	width = "24";
+}
+OutilResultatsParDiplome : WOHyperlink {
+	action = resultatsParDiplome;
+}

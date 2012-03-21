@@ -1,0 +1,138 @@
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+Container : AjaxUpdateContainer {
+	id = containerId;
+}
+LegendFieldsetText : WOString {
+	value = legendFieldsetText;
+}
+ConditionNotEditionEnCours : WOConditional {
+	condition = fraudeurEnCours;
+	negate = true;
+}
+ConditionEditionEnCours : WOConditional {
+	condition = fraudeurEnCours;
+}
+
+FormEdition : ERXWOForm {
+}
+
+Nom : WOTextField {
+	id = "Nom";
+	value = fraudeurEnCours.frauNom;
+	class = "useMaxWidth";
+}
+Prenom : WOTextField {
+	id = "Prenom";
+	value = fraudeurEnCours.frauPrenom;
+	class = "useMaxWidth";
+}
+DateNais : CktlAjaxDatePicker {
+	id = "DateNais";
+	dateValue = fraudeurEnCours.frauDateNais;
+}
+DateDebut : CktlAjaxDatePicker {
+	id = "DateDebut";
+	dateValue = fraudeurEnCours.frauDateDebut;
+}
+DateFin : CktlAjaxDatePicker {
+	id = "DateFin";
+	dateValue = fraudeurEnCours.frauDateFin;
+}
+Bordereau : WOTextField {
+	id = "Bordereau";
+	value = fraudeurEnCours.frauBordereau;
+}
+Raison : WOTextField {
+	id = "Raison";
+	value = fraudeurEnCours.frauRaison;
+	class = "useMaxWidth";
+}
+Sanction : WOTextField {
+	id = "Sanction";
+	value = fraudeurEnCours.frauSanction;
+	class = "useMaxWidth";
+}
+Etudiant : WOTextField {
+	id = "Etudiant";
+	disabled = true;
+	value = fraudeurEnCours.toEtudiant;
+	class = "useMaxWidth";
+}
+PersonneSelect : CktlAjaxPersonneSelect {
+	editingContext = edc;
+	listViewHeight = 500;
+	listViewWidth = 640;
+	listViewTitle = "Recherchez et sélectionnez un étudiant";
+	titre = " ";
+	showIndividus = true;
+	showStructures = false;
+	showPersonnesInternes = true;
+	showRadioInterneExterne = false;
+	selection = selectedPersonne;
+	textFieldSize = 30;
+	utilisateurPersId = persIdUtilisateur;
+	value = etudiantDisplayString;
+	updateContainerID = containerId;
+}
+Inscription : WOPopUpButton {
+	id = "Inscription";
+	noSelectionString = "Non renseigné";
+	list = listeInscriptions;
+	selection = fraudeurEnCours.toInscDipl;
+	item = uneInscription;
+	class = "useMaxWidth";
+}
+
+BoutonAjouter : CktlAjaxButton {
+	type = "add";
+	text = "Ajouter...";
+	showBusyImage = true;
+	action = ajouter;
+	updateContainerID = containerId;
+}
+BoutonModifier : CktlAjaxButton {
+	type = "update";
+	text = "Modifier...";
+	showBusyImage = true;
+	action = modifier;
+	updateContainerID = containerId;
+}
+BoutonSupprimer : CktlAjaxButton {
+	type = "delete";
+	text = "Supprimer...";
+	showBusyImage = true;
+	onClickBefore = "confirm('Vous allez supprimer définitivement cet enregistrement... OK ?')";
+	action = supprimer;
+	updateContainerID = containerId;
+}
+BoutonSupprimerEtudiant : CktlAjaxButton {
+	type = "delete";
+	showBusyImage = true;
+	action = supprimerEtudiant;
+	updateContainerID = containerId;
+}
+BoutonAnnuler : CktlAjaxButton {
+	type = "cancel";
+	text = "Annuler";
+	showBusyImage = true;
+	action = annuler;
+	updateContainerID = containerId;
+}
+BoutonValider : CktlAjaxSubmitButton {
+	type = "validate";
+	text = "Valider";
+	showBusyImage = true;
+	action = valider;
+	updateContainerID = containerId;
+}
+
+FraudeursList : FraudeursList {
+	editingContext = edc;
+	dg = dgFraudeursList;
+	isReadOnly = ^isReadOnly;
+	isEditing = ^isEditing;
+	selection = selectedFraudeur;
+	height = "440px";
+}

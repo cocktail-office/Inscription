@@ -1,0 +1,8 @@
+changelog.txt Inscription
+-----------------------
+
+v1.2.. du xx/xx/2012
+- Correction des codes (pays, département, établissement, ...) qui gardaient la valeur du précédent dossier en première visu + pbs de rafraichissement en annulation
+- Ajout en page d'accueil d'un champ d'accès direct au dossier par numéro étudiant
+- Modification d'une inscription (Cadre C) possible
+- Suppression d'une inscription (Cadre C) possible

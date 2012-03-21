@@ -1,0 +1,66 @@
+<webobject name = "Wrapper">
+  	<center>
+  		<webobject name = "Container">
+		<fieldset style="width:95%;padding:10px;margin:10px;">
+		<legend><webobject name = "LegendFieldsetText"/></legend>
+  			<webobject name = "ConditionNotEditionEnCours">
+		  		&nbsp;<webobject name = "BoutonAjouter"/> <webobject name = "BoutonModifier"/> <webobject name = "BoutonSupprimer"/>
+				<webobject name="FraudeursList"/>
+			</webobject>
+  			<webobject name = "ConditionEditionEnCours">
+  				<webobject name = "FormEdition">
+					<table border="0" cellspacing="8" style="width:80%;">
+					<tbody>
+						<tr>
+							<td><label for="Etudiant" class="etiquette">Etudiant (si connu chez nous)</label></td>
+	  						<td colspan="3"><webobject name = "PersonneSelect"/> <webobject name = "BoutonSupprimerEtudiant"/></td>
+	  					</tr>
+	  					<tr>
+							<td><label for="Inscription" class="etiquette">Inscription (facultatif)</label></td>
+	  						<td colspan="3"><webobject name = "Inscription"/></td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><label for="Nom" class="etiquette">Nom</label></td>
+							<td><webobject name = "Nom" /></td>
+							<td align="right"><label for="Prenom" class="etiquette">Prénom</label></td>
+							<td><webobject name = "Prenom" /></td>
+						</tr>
+						<tr>
+							<td><label for="DateNais" class="etiquette">Date de naissance</label></td>
+	  						<td colspan="3"><webobject name = "DateNais"/></td>
+						</tr>
+						<tr>
+							<td><label for="DateDebut" class="etiquette">Date de début</label></td>
+	  						<td><webobject name = "DateDebut"/></td>
+							<td align="right"><label for="DateFin" class="etiquette">Date de fin</label></td>
+	  						<td><webobject name = "DateFin"/></td>
+						</tr>
+						<tr>
+							<td><label for="Bordereau" class="etiquette">Bordereau No</label></td>
+	  						<td colspan="3"><webobject name = "Bordereau"/></td>
+						</tr>
+						<tr>
+							<td><label for="Raison" class="etiquette">Raison</label></td>
+	  						<td colspan="3"><webobject name = "Raison"/></td>
+						</tr>
+						<tr>
+							<td><label for="Sanction" class="etiquette">Sanction</label></td>
+	  						<td colspan="3"><webobject name = "Sanction"/></td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="center" colspan="4"><webobject name = "BoutonAnnuler"/> <webobject name = "BoutonValider"/></td>
+						</tr>
+  					</tbody>
+  					</table>
+  				</webobject>
+			</webobject>
+		</fieldset>
+		</webobject>
+  	</center>
+</webobject>

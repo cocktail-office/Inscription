@@ -1,0 +1,7 @@
+JSPrototype: WOResourceURL {
+	filename = "prototype.js";
+	framework = "FwkCktlAjaxWebExt";
+}
+Body : WOBody {
+	onload = onload;
+}
